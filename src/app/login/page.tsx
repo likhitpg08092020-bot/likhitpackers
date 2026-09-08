@@ -4,7 +4,8 @@ import { useState, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Lock, Mail, KeyRound, ArrowRight, UserCheck } from "lucide-react";
+import { Lock, Mail, KeyRound, ArrowRight, UserCheck, AlertCircle } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 function AuthForm() {
   const router = useRouter();
@@ -15,22 +16,55 @@ function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setErrorMsg("");
+
     if (mode === "register") {
-      setMode("otp");
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+      if (error) {
+        setErrorMsg(error.message);
+      } else {
+        setMode("otp"); // Supabase sent confirmation email/OTP
+      }
     } else if (mode === "login") {
-      router.push("/account");
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        setErrorMsg(error.message);
+      } else {
+        router.push("/account");
+      }
     }
+    setLoading(false);
   };
 
-  const handleVerifyOtp = (e: React.FormEvent) => {
+  const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate verification delay
-    setTimeout(() => {
+    setLoading(true);
+    setErrorMsg("");
+
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token: otp,
+      type: "signup"
+    });
+
+    if (error) {
+      setErrorMsg(error.message);
+    } else {
       router.push("/account");
-    }, 500);
+    }
+    setLoading(false);
   };
 
   return (
@@ -53,6 +87,13 @@ function AuthForm() {
           </div>
 
           <div className="p-8">
+            {errorMsg && (
+              <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-xl flex items-center gap-2 text-sm font-bold border border-red-100">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <p>{errorMsg}</p>
+              </div>
+            )}
+
             {mode === "otp" ? (
               <form onSubmit={handleVerifyOtp} className="space-y-6">
                 <div>
@@ -69,8 +110,8 @@ function AuthForm() {
                     />
                   </div>
                 </div>
-                <button type="submit" className="w-full h-14 bg-[#facc15] hover:bg-[#eab308] text-[#1e1b4b] font-black text-lg rounded-xl shadow-md uppercase tracking-wider transition-all flex items-center justify-center gap-2">
-                  Verify OTP <UserCheck className="w-5 h-5" />
+                <button disabled={loading} type="submit" className="w-full h-14 bg-[#facc15] hover:bg-[#eab308] text-[#1e1b4b] font-black text-lg rounded-xl shadow-md uppercase tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50">
+                  {loading ? "Verifying..." : "Verify OTP"} <UserCheck className="w-5 h-5" />
                 </button>
                 <div className="text-center">
                   <button type="button" onClick={() => setMode("register")} className="text-sm font-bold text-slate-500 hover:text-[#3b1c90]">
@@ -85,14 +126,14 @@ function AuthForm() {
                 <div className="flex p-1 bg-slate-100 rounded-xl mb-8">
                   <button 
                     type="button" 
-                    onClick={() => setMode("login")}
+                    onClick={() => { setMode("login"); setErrorMsg(""); }}
                     className={`flex-1 py-3 text-sm font-bold rounded-lg transition-colors ${mode === "login" ? "bg-white text-[#3b1c90] shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
                   >
                     Login
                   </button>
                   <button 
                     type="button" 
-                    onClick={() => setMode("register")}
+                    onClick={() => { setMode("register"); setErrorMsg(""); }}
                     className={`flex-1 py-3 text-sm font-bold rounded-lg transition-colors ${mode === "register" ? "bg-white text-[#3b1c90] shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
                   >
                     Sign Up
@@ -129,8 +170,8 @@ function AuthForm() {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full h-14 bg-[#e81cff] hover:bg-[#d014e5] text-white font-black text-lg rounded-xl shadow-md uppercase tracking-wider transition-all flex items-center justify-center gap-2">
-                  {mode === "login" ? "Login" : "Submit"} <ArrowRight className="w-5 h-5" />
+                <button disabled={loading} type="submit" className="w-full h-14 bg-[#e81cff] hover:bg-[#d014e5] text-white font-black text-lg rounded-xl shadow-md uppercase tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50">
+                  {loading ? "Processing..." : mode === "login" ? "Login" : "Submit"} <ArrowRight className="w-5 h-5" />
                 </button>
               </form>
             )}
