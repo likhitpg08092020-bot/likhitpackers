@@ -6,19 +6,18 @@ export async function POST(request: Request) {
     const data = await request.json();
     const { formType, ...fields } = data; // formType: 'contact', 'quote', or 'chat'
 
-    // Create a transporter using Gmail SMTP (user must provide real credentials in production)
-    // For development, we'll configure it, but it will fail if EMAIL_USER and EMAIL_PASS are missing.
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER || 'likhitpg08092020@gmail.com',
-        pass: process.env.EMAIL_PASS || 'your_gmail_app_password_here',
+        pass: process.env.EMAIL_PASS, // Needs 16-character Google App Password
       },
     });
 
     let subject = '';
     let htmlContent = '';
 
+    // 1. Email to the Business (Likhit Packers)
     if (formType === 'contact') {
       subject = `New Contact Message from ${fields.name}`;
       htmlContent = `
@@ -33,7 +32,7 @@ export async function POST(request: Request) {
       htmlContent = `
         <h2>New Quotation Request</h2>
         <p><strong>Name:</strong> ${fields.name}</p>
-        <p><strong>Mobile:</strong> ${fields.mobile}</p>
+        <p><strong>Mobile:</strong> ${fields.mobile || fields.phone}</p>
         <p><strong>Email:</strong> ${fields.email}</p>
         <hr/>
         <h3>Moving Details</h3>
@@ -52,26 +51,49 @@ export async function POST(request: Request) {
       `;
     }
 
-    const mailOptions = {
+    const businessMailOptions = {
       from: process.env.EMAIL_USER || 'likhitpg08092020@gmail.com',
       to: 'likhitpg08092020@gmail.com',
       subject: subject,
       html: htmlContent,
     };
 
-    // Attempt to send email
     if (process.env.EMAIL_PASS) {
-      await transporter.sendMail(mailOptions);
+      // Send to business
+      await transporter.sendMail(businessMailOptions);
+      
+      // 2. Email to the Customer (Auto-responder)
+      if (fields.email) {
+        const customerMailOptions = {
+          from: process.env.EMAIL_USER || 'likhitpg08092020@gmail.com',
+          to: fields.email,
+          subject: 'Thank You for Contacting Likhit Packers and Movers!',
+          html: `
+            <h3>Dear ${fields.name || 'Customer'},</h3>
+            <p>Thank you for reaching out to Likhit Packers and Movers.</p>
+            <p>We have successfully received your request and our logistics team is currently reviewing your details. One of our representatives will contact you very soon with your quotation and next steps!</p>
+            <br/>
+            <p>Best Regards,</p>
+            <p><strong>Likhit Packers and Movers</strong></p>
+            <p>Phone: +91 9900231434</p>
+          `,
+        };
+        await transporter.sendMail(customerMailOptions);
+      }
     } else {
       console.log('--- SIMULATED EMAIL SEND (Missing EMAIL_PASS in .env) ---');
-      console.log(mailOptions);
+      console.log(businessMailOptions);
+      return NextResponse.json(
+        { success: false, message: 'Server missing EMAIL_PASS configuration.' },
+        { status: 500 }
+      );
     }
 
-    return NextResponse.json({ success: true, message: 'Email processed successfully!' });
+    return NextResponse.json({ success: true, message: 'Emails sent successfully!' });
   } catch (error) {
     console.error('Email API Error:', error);
     return NextResponse.json(
-      { success: false, message: 'Failed to send email.' },
+      { success: false, message: 'Failed to send emails.' },
       { status: 500 }
     );
   }
