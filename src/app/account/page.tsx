@@ -1,9 +1,57 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { User, Package, MapPin, Bell } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 export default function AccountPage() {
+  const router = useRouter();
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [joinedDate, setJoinedDate] = useState<string>("Loading...");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function getUser() {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      
+      if (!session) {
+        router.push("/login"); // Redirect to login if not authenticated
+        return;
+      }
+      
+      setUserEmail(session.user.email || null);
+      
+      if (session.user.created_at) {
+        const date = new Date(session.user.created_at);
+        setJoinedDate(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+      }
+      setLoading(false);
+    }
+    
+    getUser();
+  }, [router]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push("/login");
+  };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col min-h-screen bg-slate-50">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <p className="text-xl font-bold text-slate-500 animate-pulse">Loading profile...</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Header />
@@ -11,11 +59,9 @@ export default function AccountPage() {
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-4xl font-black text-[#3b1c90] uppercase tracking-tight">My Profile</h1>
-            <Link href="/login">
-              <button className="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-lg transition-colors">
-                Logout
-              </button>
-            </Link>
+            <button onClick={handleLogout} className="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-lg transition-colors">
+              Logout
+            </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -26,16 +72,20 @@ export default function AccountPage() {
                 <div className="w-24 h-24 bg-[#e81cff] rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg text-white">
                   <User className="w-12 h-12" />
                 </div>
-                <h2 className="text-xl font-bold text-slate-900">Valued Customer</h2>
-                <p className="text-slate-500 font-medium mb-6">customer@gmail.com</p>
+                <h2 className="text-xl font-bold text-slate-900 line-clamp-1" title={userEmail?.split('@')[0] || 'Customer'}>
+                  {userEmail?.split('@')[0] || 'Valued Customer'}
+                </h2>
+                <p className="text-slate-500 font-medium mb-6 break-all">
+                  {userEmail}
+                </p>
                 <div className="border-t border-slate-100 pt-6 space-y-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Phone:</span>
-                    <span className="font-bold text-slate-800">+91 - </span>
+                    <span className="font-bold text-slate-800">Add in Settings</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Joined:</span>
-                    <span className="font-bold text-slate-800">Today</span>
+                    <span className="font-bold text-slate-800">{joinedDate}</span>
                   </div>
                 </div>
               </div>
