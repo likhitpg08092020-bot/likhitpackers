@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?  @unique
+  phone     String
+  whatsapp  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  enquiries Enquiry[]
+  bookings  Booking[]
+}
+
+model Enquiry {
+  id             String   @id @default(cuid())
+  enquiryId      String   @unique // e.g., LPM-Q-2026-000845
+  customerId     String
+  fromLocation   String
+  toLocation     String
+  serviceType    String
+  preferredDate  DateTime?
+  message        String?
+  status         String   @default("New") // New, Contacted, Quote Sent, Confirmed, Cancelled, Completed
+  propertyType   String?
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  customer       Customer @relation(fields: [customerId], references: [id])
+  quotation      Quotation?
+  booking        Booking?
+}
+
+model Quotation {
+  id             String   @id @default(cuid())
+  enquiryId      String   @unique
+  amount         Float
+  validUntil     DateTime
+  notes          String?
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  enquiry        Enquiry  @relation(fields: [enquiryId], references: [id])
+}
+
+model Booking {
+  id             String   @id @default(cuid())
+  bookingId      String   @unique // e.g., LPM-KA-2026-000123
+  customerId     String
+  enquiryId      String?  @unique
+  
+  fromLocation   String
+  toLocation     String
+  pickupAddress  String?
+  deliveryAddress String?
+  
+  serviceType    String
+  movingDate     DateTime?
+  status         String   @default("Booking Confirmed") // Booking Confirmed, Survey Completed, Packing Completed, Items Loaded, Vehicle Dispatched, In Transit, Arrived at Destination, Unloading, Delivered
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  customer       Customer @relation(fields: [customerId], references: [id])
+  enquiry        Enquiry? @relation(fields: [enquiryId], references: [id])
+  statusHistory  BookingStatusHistory[]
+}
+
+model BookingStatusHistory {
+  id             String   @id @default(cuid())
+  bookingId      String
+  status         String
+  location       String?
+  note           String?
+  date           DateTime @default(now())
+  
+  booking        Booking  @relation(fields: [bookingId], references: [id])
+}
+
+model Location {
+  id             String   @id @default(cuid())
+  districtName   String
+  majorCities    String // Comma separated or JSON string
+  availableServices String // Comma separated or JSON string
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Testimonial {
+  id             String   @id @default(cuid())
+  customerName   String
+  city           String
+  serviceType    String
+  review         String
+  rating         Int      @default(5)
+  isVerified     Boolean  @default(true)
+  
+  createdAt      DateTime @default(now())
+}
+
+model FAQ {
+  id             String   @id @default(cuid())
+  question       String
+  answer         String
+  category       String?
+  
+  createdAt      DateTime @default(now())
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          String    @default("admin")
+}
