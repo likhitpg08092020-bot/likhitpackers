@@ -3,8 +3,60 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, ChevronDown, MessageCircle, Mail } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    };
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+    if (!accessKey) {
+      alert("System Error: Web3Forms Access Key is missing.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Contact Message from ${data.name}`,
+          from_name: "Likhit Packers Website",
+          to: "likhitpg08092020@gmail.com",
+          ...data,
+        }),
+      });
+
+      if (response.status === 200) {
+        setIsSubmitted(true);
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      alert('Error sending message.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white font-sans text-slate-800">
       
@@ -117,32 +169,7 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="bg-white rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 p-8 md:p-10">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h3>
-              <form className="space-y-4" onSubmit={async (e) => {
-                e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                const data = {
-                  formType: 'contact',
-                  name: formData.get('name'),
-                  phone: formData.get('phone'),
-                  email: formData.get('email'),
-                  message: formData.get('message'),
-                };
-                try {
-                  const res = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                  });
-                  if (res.ok) {
-                    alert('Message sent successfully!');
-                    (e.target as HTMLFormElement).reset();
-                  } else {
-                    alert('Failed to send message.');
-                  }
-                } catch (error) {
-                  alert('Error sending message.');
-                }
-              }}>
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label className="text-sm font-bold text-slate-700 mb-2 block">Full Name</label>
                   <input type="text" name="name" required placeholder="Your Name" className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all" />

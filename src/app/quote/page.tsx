@@ -33,18 +33,39 @@ export default function QuotePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+    if (!accessKey) {
+      alert("System Error: Web3Forms Access Key is missing.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ formType: 'quote', ...formData })
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Quote Request from ${formData.name}`,
+          from_name: "Likhit Packers Website",
+          ...formData,
+        }),
       });
-      if (res.ok) {
+
+      const result = await response.json();
+      
+      if (response.status === 200) {
         setIsSubmitted(true);
       } else {
+        console.error(result);
         alert('Failed to submit quote request. Please try again.');
       }
     } catch (error) {
+      console.error(error);
       alert('Error submitting request.');
     } finally {
       setIsSubmitting(false);
