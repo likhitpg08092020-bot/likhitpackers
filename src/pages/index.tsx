@@ -101,48 +101,48 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-4xl mx-auto pt-8">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4">
-                  <Box className="w-14 h-14 text-[#3b1c90]" strokeWidth={1.5} />
+              <Link to="/services/packing-unpacking" className="flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4 group-hover:bg-[#d4af37] transition-colors">
+                  <Box className="w-14 h-14 text-[#3b1c90] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3">Packing Services</h3>
+                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3 group-hover:text-[#d4af37] transition-colors">Packing Services</h3>
                 <p className="text-slate-600 font-medium max-w-xs">Professional packing with high quality materials to ensure safety.</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4">
-                  <Truck className="w-14 h-14 text-[#3b1c90]" strokeWidth={1.5} />
+              </Link>
+              <Link to="/services/household-shifting" className="flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4 group-hover:bg-[#d4af37] transition-colors">
+                  <Truck className="w-14 h-14 text-[#3b1c90] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3">Home Relocation</h3>
+                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3 group-hover:text-[#d4af37] transition-colors">Home Relocation</h3>
                 <p className="text-slate-600 font-medium max-w-xs">End-to-end residential shifting solutions making your move hassle-free.</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4">
-                  <Monitor className="w-14 h-14 text-[#3b1c90]" strokeWidth={1.5} />
+              </Link>
+              <Link to="/services/office-relocation" className="flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4 group-hover:bg-[#d4af37] transition-colors">
+                  <Monitor className="w-14 h-14 text-[#3b1c90] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3">Office Relocation</h3>
+                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3 group-hover:text-[#d4af37] transition-colors">Office Relocation</h3>
                 <p className="text-slate-600 font-medium max-w-xs">Safe and organized moving of IT equipment and furniture.</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4">
-                  <ShieldCheck className="w-14 h-14 text-[#3b1c90]" strokeWidth={1.5} />
+              </Link>
+              <Link to="/services/vehicle-transportation" className="flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4 group-hover:bg-[#d4af37] transition-colors">
+                  <ShieldCheck className="w-14 h-14 text-[#3b1c90] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3">Vehicle Transport</h3>
+                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3 group-hover:text-[#d4af37] transition-colors">Vehicle Transport</h3>
                 <p className="text-slate-600 font-medium max-w-xs">Specialized carriers for secure transportation of your car or bike.</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4">
-                  <PackageOpen className="w-14 h-14 text-[#3b1c90]" strokeWidth={1.5} />
+              </Link>
+              <Link to="/services/packing-unpacking" className="flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4 group-hover:bg-[#d4af37] transition-colors">
+                  <PackageOpen className="w-14 h-14 text-[#3b1c90] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3">Unpacking Services</h3>
+                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3 group-hover:text-[#d4af37] transition-colors">Unpacking Services</h3>
                 <p className="text-slate-600 font-medium max-w-xs">Careful unpacking and arrangement of your belongings at destination.</p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4">
-                  <Warehouse className="w-14 h-14 text-[#3b1c90]" strokeWidth={1.5} />
+              </Link>
+              <Link to="/services/storage-warehousing" className="flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+                <div className="w-[120px] h-[120px] rounded-full border-[3px] border-dashed border-[#d4af37] flex items-center justify-center mb-6 p-4 group-hover:bg-[#d4af37] transition-colors">
+                  <Warehouse className="w-14 h-14 text-[#3b1c90] group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3">Warehousing</h3>
+                <h3 className="text-2xl font-bold text-[#3b1c90] mb-3 group-hover:text-[#d4af37] transition-colors">Warehousing</h3>
                 <p className="text-slate-600 font-medium max-w-xs">Secure storage facilities for short and long-term requirements.</p>
-              </div>
+              </Link>
             </div>
           </div>
         </section>
