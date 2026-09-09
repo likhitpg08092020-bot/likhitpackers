@@ -31,7 +31,6 @@ jobs:
         env:
           VITE_SUPABASE_URL: "https://dkxinkzzgrimtnxwjoiv.supabase.co"
           VITE_SUPABASE_ANON_KEY: "sb_publishable_MH3anMcZnO0drnH0qIp1RQ_tMiVWvmS"
-          VITE_BASE_PATH: "/likhitpackers"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
