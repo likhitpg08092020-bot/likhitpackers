@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, ChevronDown, MessageCircle, Mail } from "lucide-react";
 import { useState } from "react";
@@ -63,20 +63,20 @@ export default function Contact() {
       {/* 1. HEADER */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md">
         <div className="container mx-auto px-4 md:px-6 flex h-28 items-center justify-between">
-          <Link href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src="/logo.png" alt="Likhit Packers & Movers" className="h-24 w-auto drop-shadow-sm" />
           </Link>
           <nav className="hidden lg:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-slate-600 hover:text-slate-900">Home</Link>
-            <Link href="/about" className="text-sm font-medium text-slate-600 hover:text-slate-900">About</Link>
+            <Link to="/" className="text-sm font-medium text-slate-600 hover:text-slate-900">Home</Link>
+            <Link to="/about" className="text-sm font-medium text-slate-600 hover:text-slate-900">About</Link>
             <div className="flex items-center gap-1 group cursor-pointer">
               <span className="text-sm font-medium text-slate-600 group-hover:text-slate-900">Services</span>
               <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-slate-900 transition-transform group-hover:rotate-180" />
             </div>
-            <Link href="/track" className="text-sm font-medium text-slate-600 hover:text-slate-900">Track My Move</Link>
-            <Link href="/locations" className="text-sm font-medium text-slate-600 hover:text-slate-900">Locations</Link>
-            <Link href="/guide" className="text-sm font-medium text-slate-600 hover:text-slate-900">Moving Guide</Link>
-            <Link href="/contact" className="text-sm font-semibold text-slate-900">Contact</Link>
+            <Link to="/track" className="text-sm font-medium text-slate-600 hover:text-slate-900">Track My Move</Link>
+            <Link to="/locations" className="text-sm font-medium text-slate-600 hover:text-slate-900">Locations</Link>
+            <Link to="/guide" className="text-sm font-medium text-slate-600 hover:text-slate-900">Moving Guide</Link>
+            <Link to="/contact" className="text-sm font-semibold text-slate-900">Contact</Link>
           </nav>
           <div className="flex items-center gap-4">
             <div className="hidden xl:flex items-center gap-2 mr-4 text-slate-600 font-medium text-sm">
@@ -217,30 +217,30 @@ export default function Contact() {
           <div>
             <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Company</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/about" className="hover:text-orange-500 transition-colors">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-orange-500 transition-colors">Services</Link></li>
-              <li><Link href="/process" className="hover:text-orange-500 transition-colors">How We Work</Link></li>
-              <li><Link href="/contact" className="hover:text-orange-500 transition-colors font-bold text-slate-900">Contact</Link></li>
+              <li><Link to="/about" className="hover:text-orange-500 transition-colors">About Us</Link></li>
+              <li><Link to="/services" className="hover:text-orange-500 transition-colors">Services</Link></li>
+              <li><Link to="/process" className="hover:text-orange-500 transition-colors">How We Work</Link></li>
+              <li><Link to="/contact" className="hover:text-orange-500 transition-colors font-bold text-slate-900">Contact</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Services</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/services/home-relocation" className="hover:text-orange-500 transition-colors">Home Relocation</Link></li>
-              <li><Link href="/services/office-relocation" className="hover:text-orange-500 transition-colors">Office Relocation</Link></li>
-              <li><Link href="/services/vehicle-transport" className="hover:text-orange-500 transition-colors">Vehicle Transport</Link></li>
-              <li><Link href="/services/packing" className="hover:text-orange-500 transition-colors">Packing & Unpacking</Link></li>
+              <li><Link to="/services/home-relocation" className="hover:text-orange-500 transition-colors">Home Relocation</Link></li>
+              <li><Link to="/services/office-relocation" className="hover:text-orange-500 transition-colors">Office Relocation</Link></li>
+              <li><Link to="/services/vehicle-transport" className="hover:text-orange-500 transition-colors">Vehicle Transport</Link></li>
+              <li><Link to="/services/packing" className="hover:text-orange-500 transition-colors">Packing & Unpacking</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">Customer</h4>
             <ul className="space-y-4 text-sm font-medium">
-              <li><Link href="/track" className="hover:text-orange-500 transition-colors flex items-center gap-2">Track My Move</Link></li>
-              <li><Link href="/quote" className="hover:text-orange-500 transition-colors">Get a Quote</Link></li>
-              <li><Link href="/guide" className="hover:text-orange-500 transition-colors">Moving Guide</Link></li>
-              <li><Link href="/faq" className="hover:text-orange-500 transition-colors">FAQ</Link></li>
+              <li><Link to="/track" className="hover:text-orange-500 transition-colors flex items-center gap-2">Track My Move</Link></li>
+              <li><Link to="/quote" className="hover:text-orange-500 transition-colors">Get a Quote</Link></li>
+              <li><Link to="/guide" className="hover:text-orange-500 transition-colors">Moving Guide</Link></li>
+              <li><Link to="/faq" className="hover:text-orange-500 transition-colors">FAQ</Link></li>
             </ul>
           </div>
         </div>
@@ -249,70 +249,70 @@ export default function Contact() {
         <div className="container mx-auto px-4 md:px-6 pt-12 pb-4">
           <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs border-b border-slate-100 pb-2">Our Branch Locations in Karnataka</h4>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-medium text-slate-500">
-            <Link href="/packers-and-movers-in-hubli/" className="hover:text-orange-500 transition-colors">Hubli</Link>
+            <Link to="/packers-and-movers-in-hubli/" className="hover:text-orange-500 transition-colors">Hubli</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-bellary/" className="hover:text-orange-500 transition-colors">Bellary</Link>
+            <Link to="/packers-and-movers-in-bellary/" className="hover:text-orange-500 transition-colors">Bellary</Link>
             <span>|</span>
-            <Link href="/likhit-packers-and-movers-in-bagalkot/" className="hover:text-orange-500 transition-colors">Bagalkot</Link>
+            <Link to="/likhit-packers-and-movers-in-bagalkot/" className="hover:text-orange-500 transition-colors">Bagalkot</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-bangalore-south/" className="hover:text-orange-500 transition-colors">Bangalore Urban</Link>
+            <Link to="/packers-and-movers-in-bangalore-south/" className="hover:text-orange-500 transition-colors">Bangalore Urban</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-bengaluru-rural/" className="hover:text-orange-500 transition-colors">Bengaluru Rural</Link>
+            <Link to="/packers-and-movers-bengaluru-rural/" className="hover:text-orange-500 transition-colors">Bengaluru Rural</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-belagavi/" className="hover:text-orange-500 transition-colors">Belagavi</Link>
+            <Link to="/packers-and-movers-in-belagavi/" className="hover:text-orange-500 transition-colors">Belagavi</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-bidar/" className="hover:text-orange-500 transition-colors">Bidar</Link>
+            <Link to="/packers-and-movers-in-bidar/" className="hover:text-orange-500 transition-colors">Bidar</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-chamarajanagar/" className="hover:text-orange-500 transition-colors">Chamarajanagar</Link>
+            <Link to="/packers-and-movers-in-chamarajanagar/" className="hover:text-orange-500 transition-colors">Chamarajanagar</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-chikballapur/" className="hover:text-orange-500 transition-colors">Chikballapur</Link>
+            <Link to="/packers-and-movers-in-chikballapur/" className="hover:text-orange-500 transition-colors">Chikballapur</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-chikkamagaluru/" className="hover:text-orange-500 transition-colors">Chikkamagaluru</Link>
+            <Link to="/packers-and-movers-in-chikkamagaluru/" className="hover:text-orange-500 transition-colors">Chikkamagaluru</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-chitradurga/" className="hover:text-orange-500 transition-colors">Chitradurga</Link>
+            <Link to="/packers-and-movers-in-chitradurga/" className="hover:text-orange-500 transition-colors">Chitradurga</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-dakshina-kannada/" className="hover:text-orange-500 transition-colors">Dakshina Kannada</Link>
+            <Link to="/packers-and-movers-in-dakshina-kannada/" className="hover:text-orange-500 transition-colors">Dakshina Kannada</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-davanagere/" className="hover:text-orange-500 transition-colors">Davanagere</Link>
+            <Link to="/packers-and-movers-in-davanagere/" className="hover:text-orange-500 transition-colors">Davanagere</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-gadag/" className="hover:text-orange-500 transition-colors">Gadag</Link>
+            <Link to="/packers-and-movers-in-gadag/" className="hover:text-orange-500 transition-colors">Gadag</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-hassan/" className="hover:text-orange-500 transition-colors">Hassan</Link>
+            <Link to="/packers-and-movers-in-hassan/" className="hover:text-orange-500 transition-colors">Hassan</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-haveri/" className="hover:text-orange-500 transition-colors">Haveri</Link>
+            <Link to="/packers-and-movers-in-haveri/" className="hover:text-orange-500 transition-colors">Haveri</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-kalaburagi/" className="hover:text-orange-500 transition-colors">Kalaburagi</Link>
+            <Link to="/packers-and-movers-in-kalaburagi/" className="hover:text-orange-500 transition-colors">Kalaburagi</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-kodagu/" className="hover:text-orange-500 transition-colors">Kodagu</Link>
+            <Link to="/packers-and-movers-in-kodagu/" className="hover:text-orange-500 transition-colors">Kodagu</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-kolar/" className="hover:text-orange-500 transition-colors">Kolar</Link>
+            <Link to="/packers-and-movers-in-kolar/" className="hover:text-orange-500 transition-colors">Kolar</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-mandya/" className="hover:text-orange-500 transition-colors">Mandya</Link>
+            <Link to="/packers-and-movers-in-mandya/" className="hover:text-orange-500 transition-colors">Mandya</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-mysuru/" className="hover:text-orange-500 transition-colors">Mysuru</Link>
+            <Link to="/packers-and-movers-in-mysuru/" className="hover:text-orange-500 transition-colors">Mysuru</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-raichur/" className="hover:text-orange-500 transition-colors">Raichur</Link>
+            <Link to="/packers-and-movers-in-raichur/" className="hover:text-orange-500 transition-colors">Raichur</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-ramanagara/" className="hover:text-orange-500 transition-colors">Ramanagara</Link>
+            <Link to="/packers-and-movers-in-ramanagara/" className="hover:text-orange-500 transition-colors">Ramanagara</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-shivamogga/" className="hover:text-orange-500 transition-colors">Shivamogga</Link>
+            <Link to="/packers-and-movers-in-shivamogga/" className="hover:text-orange-500 transition-colors">Shivamogga</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-tumakuru/" className="hover:text-orange-500 transition-colors">Tumakuru</Link>
+            <Link to="/packers-and-movers-in-tumakuru/" className="hover:text-orange-500 transition-colors">Tumakuru</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-udupi/" className="hover:text-orange-500 transition-colors">Udupi</Link>
+            <Link to="/packers-and-movers-in-udupi/" className="hover:text-orange-500 transition-colors">Udupi</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-uttara-kannada/" className="hover:text-orange-500 transition-colors">Uttara Kannada</Link>
+            <Link to="/packers-and-movers-in-uttara-kannada/" className="hover:text-orange-500 transition-colors">Uttara Kannada</Link>
             <span>|</span>
-            <Link href="/packers-and-movers-in-vijayapura/" className="hover:text-orange-500 transition-colors">Vijayapura</Link>
+            <Link to="/packers-and-movers-in-vijayapura/" className="hover:text-orange-500 transition-colors">Vijayapura</Link>
           </div>
         </div>
         
         <div className="container mx-auto px-4 md:px-6 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
           <p>© 2026 Likhit Packers & Movers. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-slate-900 transition-colors">Terms & Conditions</Link>
-            <Link href="/cancellation" className="hover:text-slate-900 transition-colors">Cancellation Policy</Link>
+            <Link to="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-slate-900 transition-colors">Terms & Conditions</Link>
+            <Link to="/cancellation" className="hover:text-slate-900 transition-colors">Cancellation Policy</Link>
           </div>
         </div>
       </footer>

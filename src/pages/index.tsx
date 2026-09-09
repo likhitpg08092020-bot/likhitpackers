@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Box, Truck, Monitor, ShieldCheck, MapPin, PackageOpen, Warehouse, Mail, Phone, CheckCircle2, ArrowRight, Star } from "lucide-react";
@@ -33,7 +33,7 @@ export default function Home() {
             </div>
             
             <div className="flex items-center gap-4">
-              <Link href="#quote">
+              <Link to="#quote">
                 <button className="bg-[#e81cff] hover:bg-[#d014e5] text-white font-black text-lg px-8 py-4 rounded-xl shadow-lg uppercase tracking-wider transition-transform hover:scale-105">
                   Get a Quote
                 </button>
@@ -283,7 +283,7 @@ export default function Home() {
                   <h3 className="text-2xl font-black text-[#3b1c90] mb-4">{item.title}</h3>
                   <div className="text-xl font-bold text-slate-800 mb-2">{item.price}</div>
                   <p className="text-sm font-bold tracking-widest text-[#d4af37] uppercase mb-8">{item.desc}</p>
-                  <Link href="/quote" className="mt-auto w-full">
+                  <Link to="/quote" className="mt-auto w-full">
                     <button className="w-full bg-[#3b1c90] text-white hover:bg-[#2a1468] font-black px-8 py-4 rounded-xl uppercase tracking-wider transition-colors">
                       CONTACT NOW
                     </button>
@@ -292,7 +292,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-12">
-              <Link href="/pricing-details" className="text-lg font-bold text-[#d4af37] hover:text-[#b08e24] underline">Click here for more details</Link>
+              <Link to="/pricing-details" className="text-lg font-bold text-[#d4af37] hover:text-[#b08e24] underline">Click here for more details</Link>
             </div>
           </div>
         </section>

@@ -3,13 +3,13 @@
 import { useState, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Lock, Mail, KeyRound, ArrowRight, UserCheck, AlertCircle } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 function AuthForm() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const initialMode = searchParams.get("mode") === "register" ? "register" : "login";
   
   const [mode, setMode] = useState<"login" | "register" | "otp">(initialMode);
@@ -42,7 +42,7 @@ function AuthForm() {
       if (error) {
         setErrorMsg(error.message);
       } else {
-        router.push("/account");
+        navigate("/account");
       }
     }
     setLoading(false);
@@ -62,7 +62,7 @@ function AuthForm() {
     if (error) {
       setErrorMsg(error.message);
     } else {
-      router.push("/account");
+      navigate("/account");
     }
     setLoading(false);
   };

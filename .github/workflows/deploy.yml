@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy Vite site to Pages
 
 on:
   push:
@@ -24,22 +24,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-      - name: Build with Next.js
+      - name: Build
         run: npm run build
         env:
           NEXT_PUBLIC_SUPABASE_URL: "https://dkxinkzzgrimtnxwjoiv.supabase.co"
           NEXT_PUBLIC_SUPABASE_ANON_KEY: "sb_publishable_MH3anMcZnO0drnH0qIp1RQ_tMiVWvmS"
+          VITE_BASE_PATH: "/likhitpackers"
           NEXT_PUBLIC_BASE_PATH: "/likhitpackers"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
   deploy:
     environment:

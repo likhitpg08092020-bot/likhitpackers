@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 
 const branches = [
@@ -43,16 +43,16 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-[#facc15] mb-6 uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-3 text-sm font-medium text-slate-300">
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
-              <li><Link href="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
-              <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/quote" className="hover:text-white transition-colors">Get a quote</Link></li>
-              <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-              <li><Link href="/testimonials" className="hover:text-white transition-colors">Testimonials</Link></li>
+              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
+              <li><Link to="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
+              <li><Link to="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="/quote" className="hover:text-white transition-colors">Get a quote</Link></li>
+              <li><Link to="/careers" className="hover:text-white transition-colors">Careers</Link></li>
+              <li><Link to="/testimonials" className="hover:text-white transition-colors">Testimonials</Link></li>
             </ul>
           </div>
           
@@ -82,7 +82,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm text-slate-300 font-medium">
                 {branches.map(branch => (
                   <li key={branch}>
-                    <Link href={`/locations/${branch.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-white transition-colors">
+                    <Link to={`/locations/${branch.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-white transition-colors">
                       Packers and Movers in {branch}
                     </Link>
                   </li>

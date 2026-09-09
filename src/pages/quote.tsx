@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Phone, MapPin, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 
@@ -78,21 +78,21 @@ export default function QuotePage() {
       {/* 1. HEADER (Simplified for subpages) */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md">
         <div className="container mx-auto px-4 md:px-6 flex h-28 items-center justify-between">
-          <Link href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src="/logo.png" alt="Likhit Packers & Movers" className="h-24 w-auto drop-shadow-sm" />
           </Link>
           <nav className="hidden lg:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-slate-600 hover:text-slate-900">Home</Link>
-            <Link href="/services" className="text-sm font-medium text-slate-600 hover:text-slate-900">Services</Link>
-            <Link href="/track" className="text-sm font-medium text-slate-600 hover:text-slate-900">Track My Move</Link>
-            <Link href="/contact" className="text-sm font-medium text-slate-600 hover:text-slate-900">Contact</Link>
+            <Link to="/" className="text-sm font-medium text-slate-600 hover:text-slate-900">Home</Link>
+            <Link to="/services" className="text-sm font-medium text-slate-600 hover:text-slate-900">Services</Link>
+            <Link to="/track" className="text-sm font-medium text-slate-600 hover:text-slate-900">Track My Move</Link>
+            <Link to="/contact" className="text-sm font-medium text-slate-600 hover:text-slate-900">Contact</Link>
           </nav>
           <div className="flex items-center gap-4">
             <div className="hidden xl:flex items-center gap-2 mr-4 text-slate-600 font-medium text-sm">
               <Phone className="w-4 h-4 text-orange-500" />
               <span>+91 9900231434</span>
             </div>
-            <Link href="/quote">
+            <Link to="/quote">
               <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-sm">
                 Get Free Quote
               </Button>
@@ -230,7 +230,7 @@ export default function QuotePage() {
                 <span className="text-xl font-mono font-bold text-slate-900">LPM-Q-2026-{Math.floor(1000 + Math.random() * 9000)}</span>
               </div>
               <div>
-                <Link href="/">
+                <Link to="/">
                   <Button className="bg-slate-900 hover:bg-slate-800 text-white h-12 px-8 rounded-xl font-bold">
                     Return to Homepage
                   </Button>

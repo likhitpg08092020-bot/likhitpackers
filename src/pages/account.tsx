@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { User, Package, MapPin, Bell } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 
 export default function AccountPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [joinedDate, setJoinedDate] = useState<string>("Loading...");
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ export default function AccountPage() {
       const { data: { session }, error } = await supabase.auth.getSession();
       
       if (!session) {
-        router.push("/login"); // Redirect to login if not authenticated
+        navigate("/login"); // Redirect to login if not authenticated
         return;
       }
       
@@ -33,11 +33,11 @@ export default function AccountPage() {
     }
     
     getUser();
-  }, [router]);
+  }, [navigate]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push("/login");
+    navigate("/login");
   };
 
   if (loading) {
@@ -125,7 +125,7 @@ export default function AccountPage() {
                   <Package className="w-12 h-12 text-slate-300 mb-4" />
                   <p className="text-lg font-bold text-slate-800 mb-2">No active bookings found</p>
                   <p className="text-slate-500 mb-6 max-w-sm">You haven't requested any moving services yet. Get a free quote to start your journey!</p>
-                  <Link href="/quote">
+                  <Link to="/quote">
                     <button className="bg-[#facc15] hover:bg-[#eab308] text-[#1e1b4b] font-black px-6 py-3 rounded-xl uppercase tracking-wider transition-colors shadow-sm">
                       Book a Service
                     </button>
