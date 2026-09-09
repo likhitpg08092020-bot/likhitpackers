@@ -123,13 +123,20 @@ export default function LocationDetail() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.services.map((service, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-6">
+              <Link 
+                key={idx} 
+                to={`/services/${service.slug}`}
+                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 hover:border-orange-200 transition-all duration-300 group block"
+              >
+                <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                   <Truck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-orange-500 transition-colors">{service.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{service.desc}</p>
-              </div>
+                <div className="mt-4 flex items-center text-orange-500 font-semibold text-sm">
+                  View Details <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>

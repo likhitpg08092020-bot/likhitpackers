@@ -32,15 +32,15 @@ export const cities = [
 const aboutTextTemplate = (city: string) => `Looking for reliable packers and movers in ${city} for your home, office, vehicle or long-distance relocation? Likhit Packers and Movers provides professional packing, loading, transportation, unloading and relocation services for customers moving within ${city} or relocating to another city.\n\nWhether you are shifting to a new apartment, moving your family to Bengaluru, relocating an office, or transporting your vehicle, our team helps coordinate the complete moving process from packing to delivery.`;
 
 const servicesTemplate = (city: string) => [
-  { title: `Household Shifting in ${city}`, desc: `Complete home relocation services including packing of fragile items, furniture dismantling, and safe transit from your ${city} residence.` },
-  { title: `Local Packers and Movers in ${city}`, desc: `Fast and affordable shifting within ${city} neighborhoods with same-day delivery options.` },
-  { title: `Office Relocation in ${city}`, desc: `Minimal downtime corporate moving services for IT parks, businesses, and commercial spaces in ${city}.` },
-  { title: `Vehicle Transportation from ${city}`, desc: `Door-to-door secure transport for your car or bike from ${city} to any major city in India.` },
-  { title: `Interstate Relocation from ${city}`, desc: `Long-distance moving solutions with dedicated trucks and GPS tracking.` },
-  { title: `Packing and Unpacking`, desc: `Premium packing using bubble wrap, corrugated sheets, and specialized cartons to protect your valuables.` },
-  { title: `Loading and Unloading`, desc: `Trained workforce utilizing proper equipment to safely load and unload heavy furniture and appliances.` },
-  { title: `Furniture and Appliance Moving`, desc: `Professional dismantling of large beds, wardrobes, and tables, reassembled perfectly at your new destination.` },
-  { title: `Storage and Warehousing`, desc: `Safe, climate-controlled storage facilities for short-term or long-term keeping of your goods.` }
+  { slug: "household-shifting", title: `Household Shifting in ${city}`, desc: `Complete home relocation services including packing of fragile items, furniture dismantling, and safe transit from your ${city} residence.` },
+  { slug: "local-packers", title: `Local Packers and Movers in ${city}`, desc: `Fast and affordable shifting within ${city} neighborhoods with same-day delivery options.` },
+  { slug: "office-relocation", title: `Office Relocation in ${city}`, desc: `Minimal downtime corporate moving services for IT parks, businesses, and commercial spaces in ${city}.` },
+  { slug: "vehicle-transportation", title: `Vehicle Transportation from ${city}`, desc: `Door-to-door secure transport for your car or bike from ${city} to any major city in India.` },
+  { slug: "interstate-relocation", title: `Interstate Relocation from ${city}`, desc: `Long-distance moving solutions with dedicated trucks and GPS tracking.` },
+  { slug: "packing-unpacking", title: `Packing and Unpacking`, desc: `Premium packing using bubble wrap, corrugated sheets, and specialized cartons to protect your valuables.` },
+  { slug: "loading-unloading", title: `Loading and Unloading`, desc: `Trained workforce utilizing proper equipment to safely load and unload heavy furniture and appliances.` },
+  { slug: "furniture-moving", title: `Furniture and Appliance Moving`, desc: `Professional dismantling of large beds, wardrobes, and tables, reassembled perfectly at your new destination.` },
+  { slug: "storage-warehousing", title: `Storage and Warehousing`, desc: `Safe, climate-controlled storage facilities for short-term or long-term keeping of your goods.` }
 ];
 
 const pricingTemplate = (city: string) => [

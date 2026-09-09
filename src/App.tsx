@@ -15,6 +15,7 @@ import Login from './pages/login';
 import Quote from './pages/quote';
 import Register from './pages/register';
 import Services from './pages/services';
+import ServiceDetail from './pages/service-detail';
 import Testimonials from './pages/testimonials';
 import Track from './pages/track';
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/quote" element={<Quote />} />
         <Route path="/register" element={<Register />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/services/:id" element={<ServiceDetail />} />
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/track" element={<Track />} />
       </Routes>
