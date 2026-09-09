@@ -75,6 +75,30 @@ export default function About() {
           </div>
         </section>
 
+        {/* CEO Section */}
+        <section className="bg-slate-50 py-20 px-4 border-t border-slate-100">
+          <div className="container mx-auto max-w-5xl">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center border border-slate-100">
+              <div className="md:w-2/5 w-full bg-slate-100">
+                <img 
+                  src="/praveen-ceo.jpg" 
+                  alt="Praveen - CEO of Likhit Packers and Movers" 
+                  className="w-full h-full object-cover object-center md:h-[400px]"
+                />
+              </div>
+              <div className="md:w-3/5 w-full p-10 md:p-12">
+                <div className="uppercase tracking-widest text-sm font-bold text-orange-500 mb-2">Message from the Founder</div>
+                <h2 className="text-3xl font-black text-slate-900 mb-6">Praveen</h2>
+                <h3 className="text-xl font-medium text-slate-600 mb-6">CEO & Founder, Likhit Packers and Movers</h3>
+                <p className="text-slate-600 leading-relaxed mb-6 italic">
+                  "Our goal has always been simple: to treat every single item we move as if it were our own. We understand that relocating is about moving lives, memories, and dreams. I personally ensure that our team upholds the highest standards of integrity, safety, and customer satisfaction."
+                </p>
+                <div className="w-12 h-1 bg-orange-500 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </div>
