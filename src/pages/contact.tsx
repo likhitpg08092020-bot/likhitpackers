@@ -21,7 +21,7 @@ export default function Contact() {
       message: formData.get('message'),
     };
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "";
+    const accessKey = (import.meta.env as any).VITE_WEB3FORMS_KEY || "";
     if (!accessKey) {
       alert("System Error: Web3Forms Access Key is missing.");
       setIsSubmitting(false);
