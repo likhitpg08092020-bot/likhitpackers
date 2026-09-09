@@ -109,41 +109,41 @@ export function getLocationData(slug: string) {
   return {
     slug,
     cityName,
-    seoTitle: \`Best Packers and Movers in \${cityName} | Likhit Packers\`,
-    seoDescription: \`Looking for top-rated packers and movers in \${cityName}? We offer safe household shifting, office relocation, and vehicle transport. Get a free quote today!\`,
-    h1: \`Best Packers and Movers in \${cityName}\`,
-    heroSubtitle: \`Professional, safe, and reliable relocation services tailored for \${cityName}\`,
+    seoTitle: `Best Packers and Movers in ${cityName} | Likhit Packers`,
+    seoDescription: `Looking for top-rated packers and movers in ${cityName}? We offer safe household shifting, office relocation, and vehicle transport. Get a free quote today!`,
+    h1: `Best Packers and Movers in ${cityName}`,
+    heroSubtitle: `Professional, safe, and reliable relocation services tailored for ${cityName}`,
     aboutText,
     services,
     pricing,
     schema: {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": \`Likhit Packers and Movers \${cityName}\`,
+      "name": `Likhit Packers and Movers ${cityName}`,
       "image": "https://www.likhitpackers.in/logo.png",
-      "description": \`Reliable packers and movers in \${cityName} offering household shifting, office relocation, and car transportation.\`,
+      "description": `Reliable packers and movers in ${cityName} offering household shifting, office relocation, and car transportation.`,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": cityName,
         "addressRegion": "Karnataka",
         "addressCountry": "IN"
       },
-      "url": \`https://www.likhitpackers.in/locations/\${slug}\`,
+      "url": `https://www.likhitpackers.in/locations/${slug}`,
       "telephone": "+919900231434",
       "priceRange": "₹4000 - ₹25000"
     },
     faq: [
       {
-        question: \`How much do packers and movers charge in \${cityName}?\`,
-        answer: \`The cost of shifting in \${cityName} depends on the volume of goods, distance, and packing materials required. Local shifting starts around ₹4,500 for a 1 BHK.\`
+        question: `How much do packers and movers charge in ${cityName}?`,
+        answer: `The cost of shifting in ${cityName} depends on the volume of goods, distance, and packing materials required. Local shifting starts around ₹4,500 for a 1 BHK.`
       },
       {
-        question: \`Do you provide vehicle transportation from \${cityName}?\`,
-        answer: \`Yes, we offer secure door-to-door car and bike transportation services from \${cityName} to anywhere in India using specialized carrier vehicles.\`
+        question: `Do you provide vehicle transportation from ${cityName}?`,
+        answer: `Yes, we offer secure door-to-door car and bike transportation services from ${cityName} to anywhere in India using specialized carrier vehicles.`
       },
       {
-        question: \`Is my luggage insured during transit from \${cityName}?\`,
-        answer: \`Absolutely. We provide transit insurance for your valuable goods to ensure complete peace of mind during your relocation from \${cityName}.\`
+        question: `Is my luggage insured during transit from ${cityName}?`,
+        answer: `Absolutely. We provide transit insurance for your valuable goods to ensure complete peace of mind during your relocation from ${cityName}.`
       }
     ],
     nearbyLinks: cities.filter(c => c.slug !== slug).sort(() => 0.5 - Math.random()).slice(0, 8)
