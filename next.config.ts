@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
+  basePath: '/likhitpackers',
+  assetPrefix: '/likhitpackers',
   images: {
     unoptimized: true,
   },
