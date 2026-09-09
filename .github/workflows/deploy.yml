@@ -31,6 +31,8 @@ jobs:
         env:
           VITE_SUPABASE_URL: "https://dkxinkzzgrimtnxwjoiv.supabase.co"
           VITE_SUPABASE_ANON_KEY: "sb_publishable_MH3anMcZnO0drnH0qIp1RQ_tMiVWvmS"
+      - name: Add 404 fallback
+        run: cp dist/index.html dist/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

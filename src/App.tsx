@@ -9,6 +9,7 @@ import Faq from './pages/faq';
 import Gallery from './pages/gallery';
 import Guide from './pages/guide';
 import Locations from './pages/locations';
+import LocationDetail from './pages/location-detail';
 import Login from './pages/login';
 import Quote from './pages/quote';
 import Register from './pages/register';
@@ -32,6 +33,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/guide" element={<Guide />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="/locations/:city" element={<LocationDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/quote" element={<Quote />} />
         <Route path="/register" element={<Register />} />
