@@ -8,7 +8,7 @@ import './globals.css' // Import the global styles
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter basename={(import.meta.env as any).VITE_BASE_PATH || '/'}>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <App />
       </BrowserRouter>
     </HelmetProvider>
