@@ -1,12 +1,18 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import { servicesData } from "@/data/servicesData";
 import { Truck, CheckCircle2 } from "lucide-react";
 
 export default function Services() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEO 
+        title="Packing and Moving Services in Karnataka | Likhit Packers and Movers"
+        description="Comprehensive shifting services including Household Relocation, Office Shifting, Vehicle Transportation, Packing & Unpacking, and Secure Warehousing across Karnataka."
+        canonical="/services"
+      />
       <Header />
       <main className="flex-1 container mx-auto px-4 py-24">
         <div className="max-w-4xl mx-auto text-center">

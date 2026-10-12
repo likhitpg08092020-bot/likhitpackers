@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 export default function Gallery() {
   const images = [
@@ -15,6 +16,11 @@ export default function Gallery() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <SEO 
+        title="Photo Gallery | Relocation & Packing Photos | Likhit Packers and Movers"
+        description="Explore photos of our professional packing, household shifting, corporate relocations, and fleet operations across Karnataka."
+        canonical="/gallery"
+      />
       <Header />
       <main className="flex-1">
         <section className="bg-slate-900 text-white py-24 px-4 text-center">

@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -30,6 +31,11 @@ export default function Blog() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="Moving Tips & Relocation Blog | Likhit Packers and Movers"
+        description="Expert packing tips, moving checklists, and corporate relocation guides from the experienced team at Likhit Packers and Movers."
+        canonical="/blog"
+      />
       <Header />
       <main className="flex-1">
         <section className="bg-slate-900 text-white py-24 px-4 text-center">

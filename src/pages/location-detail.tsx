@@ -33,7 +33,15 @@ export default function LocationDetail() {
       <Helmet>
         <title>{data.seoTitle}</title>
         <meta name="description" content={data.seoDescription} />
-        <link rel="canonical" href={`https://www.likhitpackers.in/locations/${data.slug}`} />
+        <link rel="canonical" href={`https://likhitpackers.in/locations/${data.slug}`} />
+        <meta property="og:title" content={data.seoTitle} />
+        <meta property="og:description" content={data.seoDescription} />
+        <meta property="og:url" content={`https://likhitpackers.in/locations/${data.slug}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://likhitpackers.in/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={data.seoTitle} />
+        <meta name="twitter:description" content={data.seoDescription} />
         <script type="application/ld+json">
           {JSON.stringify(data.schema)}
         </script>

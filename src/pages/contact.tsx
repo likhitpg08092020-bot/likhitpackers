@@ -1,7 +1,6 @@
-"use client";
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { MapPin, Phone, ChevronDown, MessageCircle, Mail } from "lucide-react";
 import { useState } from "react";
 
@@ -59,6 +58,11 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white font-sans text-slate-800">
+      <SEO 
+        title="Contact Us | Likhit Packers and Movers | Koppal & Karnataka"
+        description="Contact Likhit Packers and Movers. Call +91 9900231434, email likhitpg08092020@gmail.com, or send a message for instant moving estimates."
+        canonical="/contact"
+      />
       
       {/* 1. HEADER */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md">

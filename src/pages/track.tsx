@@ -1,8 +1,7 @@
-"use client";
-
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Search, MapPin, Truck, CheckCircle2, Clock } from "lucide-react";
 
 export default function TrackPage() {
@@ -26,6 +25,11 @@ export default function TrackPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="Live Consignment Tracking | Track My Move | Likhit Packers and Movers"
+        description="Track your moving truck and shipment status in real-time with Likhit Packers and Movers consignment tracker."
+        canonical="/track"
+      />
       <Header />
       <main className="flex-1 container mx-auto px-4 py-20 flex flex-col items-center">
         

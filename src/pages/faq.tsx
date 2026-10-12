@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { HelpCircle } from "lucide-react";
 
 export default function Faq() {
@@ -30,8 +31,27 @@ export default function Faq() {
     }
   ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.a
+      }
+    }))
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="Frequently Asked Questions (FAQ) | Likhit Packers and Movers"
+        description="Answers to common questions about relocation costs, transit insurance, packing quality, and vehicle transportation with Likhit Packers and Movers."
+        canonical="/faq"
+        schema={faqSchema}
+      />
       <Header />
       <main className="flex-1">
         <section className="bg-slate-900 text-white py-24 px-4 text-center">

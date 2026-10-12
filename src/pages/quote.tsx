@@ -1,8 +1,7 @@
-"use client";
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { ChevronDown, Phone, MapPin, CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 
 export default function QuotePage() {
@@ -74,6 +73,11 @@ export default function QuotePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 font-sans text-slate-800">
+      <SEO 
+        title="Get Free Quotation | Likhit Packers and Movers | Moving Cost Estimate"
+        description="Request a free price estimate for your home relocation, vehicle shifting, or corporate move with Likhit Packers and Movers in Karnataka."
+        canonical="/quote"
+      />
       
       {/* 1. HEADER (Simplified for subpages) */}
       <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md">

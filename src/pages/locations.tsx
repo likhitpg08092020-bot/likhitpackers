@@ -1,18 +1,18 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { cities } from "@/data/locationsData";
 import { MapPin, ChevronRight } from "lucide-react";
 
 export default function Locations() {
   return (
     <>
-      <Helmet>
-        <title>Service Areas & Locations | Likhit Packers and Movers</title>
-        <meta name="description" content="Likhit Packers and Movers serves all major districts and cities across Karnataka. Find dedicated local packers and movers in your city." />
-        <link rel="canonical" href="https://www.likhitpackers.in/locations" />
-      </Helmet>
+      <SEO 
+        title="Packers and Movers Across Karnataka | 28 Branch Locations | Likhit Packers"
+        description="Likhit Packers and Movers serves all 28 major districts in Karnataka including Hubli, Shivamogga, Belagavi, Davanagere, Ballari, and Bengaluru."
+        canonical="/locations"
+      />
 
       <div className="flex flex-col min-h-screen bg-slate-50">
         <Header />

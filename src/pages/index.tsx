@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Box, Truck, Monitor, ShieldCheck, MapPin, PackageOpen, Warehouse, Mail, Phone, CheckCircle2, ArrowRight, Star } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white font-sans text-slate-800">
-      
+      <SEO 
+        title="Likhit Packers and Movers | Best Packers and Movers in Karnataka"
+        description="Likhit Packers and Movers provides top-rated household shifting, office relocation, vehicle transportation, and warehousing services across Karnataka. Get a free quote today!"
+        canonical="/"
+      />
       <Header />
 
       <main className="flex-1">

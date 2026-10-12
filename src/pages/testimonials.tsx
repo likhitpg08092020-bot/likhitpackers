@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Star, Quote } from "lucide-react";
 
 export default function Testimonials() {
@@ -44,6 +45,11 @@ export default function Testimonials() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="Customer Reviews & Testimonials | Likhit Packers and Movers"
+        description="Read genuine customer reviews and ratings for Likhit Packers and Movers. See why hundreds of clients trust us for household and commercial relocation."
+        canonical="/testimonials"
+      />
       <Header />
       <main className="flex-1">
         <section className="bg-slate-900 text-white py-24 px-4 text-center">

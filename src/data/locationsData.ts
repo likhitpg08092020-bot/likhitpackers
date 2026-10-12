@@ -76,7 +76,7 @@ export function getLocationData(slug: string) {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": `Likhit Packers and Movers ${cityName}`,
-      "image": "https://www.likhitpackers.in/logo.png",
+      "image": "https://likhitpackers.in/logo.png",
       "description": `Reliable packers and movers in ${cityName} offering household shifting, office relocation, and car transportation.`,
       "address": {
         "@type": "PostalAddress",
@@ -84,7 +84,7 @@ export function getLocationData(slug: string) {
         "addressRegion": "Karnataka",
         "addressCountry": "IN"
       },
-      "url": `https://www.likhitpackers.in/locations/${slug}`,
+      "url": `https://likhitpackers.in/locations/${slug}`,
       "telephone": "+919900231434",
       "priceRange": "₹4000 - ₹25000"
     },

@@ -1,10 +1,16 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Briefcase, Send } from "lucide-react";
 
 export default function Careers() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="Careers & Job Openings | Likhit Packers and Movers"
+        description="Join Likhit Packers and Movers. We are hiring drivers, packers, and customer support executives across Karnataka."
+        canonical="/careers"
+      />
       <Header />
       <main className="flex-1">
         <section className="bg-slate-900 text-white py-24 px-4 text-center">

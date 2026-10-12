@@ -1,6 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { User, Package, MapPin, Bell } from "lucide-react";
@@ -54,6 +53,10 @@ export default function AccountPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <Helmet>
+        <title>My Account | Likhit Packers and Movers</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Header />
       <main className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-5xl mx-auto">

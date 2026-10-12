@@ -1,10 +1,16 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { CheckCircle2, Target, Shield, Users } from "lucide-react";
 
 export default function About() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="About Us | Likhit Packers and Movers | Founder Praveen"
+        description="Learn about Likhit Packers and Movers, founded by Praveen in 2024. Providing professional, dependable packing and relocation services throughout Karnataka and India."
+        canonical="/about"
+      />
       <Header />
       <main className="flex-1">
         
